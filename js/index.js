@@ -37,7 +37,6 @@ while (flag) {
         }
     }
 }
-
 //Funcion que entra en bucle si la contraseña no es correcta
 function ingresaContrasenia(listaUsuarios, nombre) {
     for (let i = 0; i < listaUsuarios.length; i++) {
