@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+    <h2>
+        Registrarse
+    </h2>
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm" aria-placeholder="adas">Nombre de usuario</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" id="userName" aria-describedby="inputGroup-sizing-sm">
+    </div>
+    <div id="errorLogueoReg" class="msjError"></div> 
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Contraseña</span>
+        <input type="password" class="form-control" aria-label="Sizing example input" id="contra" aria-describedby="inputGroup-sizing-sm">
+    </div>
+    <div id="errorContraReg" class="msjError"></div>
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Validar contraseña</span>
+        <input type="password" class="form-control" aria-label="Sizing example input" id="validaContra" aria-describedby="inputGroup-sizing-sm">
+    </div>
+    <div id="errorValida" class="msjError"></div>
+    <div id="validaMal" class="msjError"></div>
+    <div id="registracionExitosa" class="msjError"></div>
+
+    <button type="button" class="btn btn-outline-info" id="enviarInfo">Enviar</button>
+    <a href="../index.html" class="link-light">Ya tengo cuenta</a>
+    
+    <script src="../js/index.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

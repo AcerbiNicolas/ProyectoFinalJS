@@ -1,83 +1,68 @@
 class Usuarios{
-    constructor(nombre, contrasenia, categoria){
+    constructor(nombre, contrasenia){
         this.nombre = nombre.toLowerCase();
         this.contrasenia = contrasenia.toLowerCase();
-        this.categoria = parseInt(categoria);
-    }
-    getPermisos() {
-        if(this.categoria == 0){
-            return "ageno a la plataforma, compre un curso y sea parte de esta familia";
-        }else if(this.categoria == 1){
-            return "alumno";
-        }else if(this.categoria == 2){
-            return "tutor";
-        }else if(this.categoria == 3){
-            return "profesor/a";
-        }
     }
 };
 
-const usuarios = [];
-usuarios.push(new Usuarios("jorge", "coderhouse12",2));
-usuarios.push(new Usuarios("nicolas", "coderhouse10",1));
-usuarios.push(new Usuarios("silma", "housecoder",3));
-usuarios.push(new Usuarios("ricardo", "coder",0));
+let enviaInfo = document.getElementById("enviarInfo");
 
-let flag = true;
-while (flag) {
-    let nombreIngresado = prompt("Ingrese usuario");
-    if(nombreIngresado != null){
-        //valida que exista el usuario para poder buscar la contrasenia
-        let existe = existeUsuario(nombreIngresado, usuarios);
-        if(existe){
-            ingresaContrasenia(usuarios, nombreIngresado);
-            flag = false;
-        }else if (existe == false) {
-            console.log("no existe el usuario " + nombreIngresado);
-        }
-    }
+if (enviaInfo) {
+    enviaInfo.addEventListener("click", cargaDatos);
 }
-//Funcion que entra en bucle si la contraseña no es correcta
-function ingresaContrasenia(listaUsuarios, nombre) {
-    for (let i = 0; i < listaUsuarios.length; i++) {
-        const element = listaUsuarios[i].nombre;
-        if (element == nombre) {
-            let bucle = true;
-            while (bucle) {
-                let contrasenia = prompt("Ingresa contraseña");
-                bucle = comparaContrasenia(listaUsuarios[i], contrasenia);
-                if(bucle == false){
-                    alert("Bienvenido " + listaUsuarios[i].nombre + " usted es " + listaUsuarios[i].getPermisos());
-                }
-            }
+const usuario = [];
+function cargaDatos() {
+    let userNameV = document.getElementById("userName").value;
+    let contraV = document.getElementById("contra").value;
+    let validaContraV = document.getElementById("validaContra").value;
+
+        if (userNameV == "") {
+            document.getElementById("errorLogueoReg").innerHTML = "Ingrese usuario";
+        }else if (contraV == "") {
+            document.getElementById("errorContraReg").innerHTML = "Ingrese su contraseña";
+        }else if (validaContraV == "") {
+            document.getElementById("errorValida").innerHTML = "Ingrese la confirmacion de su contraseña";
+            console.log("Ingrese la validacion de su contraseña")
+        }else if (contraV != validaContraV) {
+            document.getElementById("validaMal").innerHTML = "Las contraseñas no coinciden";
+        }else{
+            document.getElementById("registracionExitosa").innerHTML = "Registrado correctamente";
+            localStorage.setItem(userNameV,contraV)
         }
-    }
 }
-//Compara contraseña con el nombre de usuario ya ingresado para ver si es correcta
-function comparaContrasenia(usuario, contrasenia){
-    if(usuario.contrasenia == contrasenia){
-        return false;
+//eliminaLocalStore(true)
+function eliminaLocalStore(espacio) {
+    if (espacio) {
+        localStorage.clear();
     }else{
-        return true;
+        sessionStorage.clear();
     }
 }
-//Valida la existenca del usuario
-function existeUsuario(nombre, listaUsuarios){
-    let salida = false;
-    for (let i = 0; i < listaUsuarios.length; i++) {
-        const element = listaUsuarios[i].nombre;
-        if (element == nombre) {
-            salida = true;
+let botonLogueo = document.getElementById("btnlogueo");
+if (botonLogueo) {
+    botonLogueo.addEventListener("click", revisaDB);
+}
+function revisaDB() {
+    let userLogueo = document.getElementById("usuarioLogueo").value;
+    let contraLogueo = document.getElementById("contraLogueo").value;
+
+    
+    for (let i = 0; i < localStorage.length; i++) {
+        let clave = localStorage.key(i)
+        let valor = localStorage.getItem(clave);
+    
+        if (userLogueo != clave) {
+            console.log("no es el mismo usuario")
+        }else if(contraLogueo != valor){
+            document.getElementById("userLogueoDiv").innerHTML = "Error en el ingreso";
+            console.log("Error de contraseña");
+        }else{
+            console.log("Ingresaste");
+            ingresaAPlataforma();
             break;
         }
     }
-    return salida;
 }
-//Muestra lista de usuarios registrados. ------------
-muestraLista(usuarios);
-function muestraLista(listaUsuarios){
-    console.log("----------------------------");
-    for (let i=0; i<listaUsuarios.length; i++){
-        console.log("Usuario " + listaUsuarios[i].nombre + " es " + listaUsuarios[i].getPermisos());
-    }
-};
+function ingresaAPlataforma() {
+    location.href = "http://127.0.0.1:5500/ProyectoFinal/pages/plataforma.html";
+}
