@@ -129,7 +129,7 @@ function revisaDB() {
     } 
 }
 function ingresaAPlataforma() {
-    location.href = "http://127.0.0.1:5500/ProyectoFinal/pages/plataforma.html";
+    location.href = "/ProyectoFinal/pages/plataforma.html";
 }
 //eliminaLocalStore(true)
 function eliminaLocalStore(espacio) {
