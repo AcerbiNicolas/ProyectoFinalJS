@@ -129,6 +129,7 @@ function revisaDB() {
     } 
 }
 function ingresaAPlataforma() {
+    //Esta funcion logra correr con el live server
     document.location.pathname = '/pages/plataforma.html';
 }
 //eliminaLocalStore(true)
