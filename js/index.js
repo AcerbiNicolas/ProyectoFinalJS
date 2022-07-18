@@ -129,7 +129,7 @@ function revisaDB() {
     } 
 }
 function ingresaAPlataforma() {
-    location.href = "/ProyectoFinal/pages/plataforma.html";
+    window.location.href = '/ProyectoFinalJS/pages/plataforma.html';
 }
 //eliminaLocalStore(true)
 function eliminaLocalStore(espacio) {
