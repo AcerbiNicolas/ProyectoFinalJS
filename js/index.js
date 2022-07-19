@@ -5,13 +5,13 @@ class Usuarios{
     }
 };
 
-const url = "https://pokeapi.co/api/v2/pokemon/4/";
+const url = "https://pokeapi.co/api/v2/item/81/";
 
 fetch(url)
 .then(Response => Response.json())
 .then(data => {
-    let curso = document.getElementById("cursoDe");
-    curso.innerHTML =`<p>${data.name}</p>`
+    let curso = document.getElementById("casas");
+    curso.innerHTML =`<p>${data.name }</p>`
     
 })
 .catch(err=>console.log(err))
@@ -130,7 +130,9 @@ function revisaDB() {
 }
 function ingresaAPlataforma() {
     //Esta funcion logra correr con el live server
-    document.location.pathname = '/pages/plataforma.html';
+    timer=3000
+    timer
+    document.location.href = '/pages/plataforma.html';
 }
 //eliminaLocalStore(true)
 function eliminaLocalStore(espacio) {

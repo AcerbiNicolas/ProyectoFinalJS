@@ -67,3 +67,28 @@ p{
     display: block;
     text-align: center;
 }
+footer{
+    display: inline-block;
+    text-align: center;
+}
+.inicioFoo{
+    padding: 10px;
+    margin: 10px;
+    position:fixed;
+    width:100%;
+    background-color:red;
+}
+h4{
+    display: inline-block;
+}
+#casas{
+    display: block;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    background-color: grey;
+}
+.regFoo{
+    width:100%;
+    background-color:red;
+}
