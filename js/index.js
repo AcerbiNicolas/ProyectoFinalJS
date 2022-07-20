@@ -130,8 +130,6 @@ function revisaDB() {
 }
 function ingresaAPlataforma() {
     //Esta funcion logra correr con el live server
-    timer=3000
-    timer
     document.location.href = '/pages/plataforma.html';
 }
 //eliminaLocalStore(true)
